@@ -6,7 +6,7 @@ import { INITIAL_NOTICES, INITIAL_UNITS, INITIAL_GALLERY } from '../constants';
 // উদাহরণ: "https://habiganj-rover-api.onrender.com/api"
 const API_BASE = window.location.hostname === 'localhost' 
   ? "http://localhost:5000/api" 
-  : "https://my-project-backend-hkk6.onrender.com/"; // এখানে Render থেকে পাওয়া লিঙ্কটি বসাবেন
+  : "https://my-project-backend-hkk6.onrender.com/api"; // এখানে Render থেকে পাওয়া লিঙ্কটি বসাবেন
 
 const DB_KEY = 'habiganj_rover_local_db';
 

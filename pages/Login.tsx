@@ -20,7 +20,7 @@ const Login = ({ setAuth }: { setAuth: (val: boolean) => void }) => {
 
     try {
       // ব্যাকএন্ডে লগইন রিকোয়েস্ট পাঠানো হচ্ছে
-      const response = await fetch("https://my-project-backend-hkk6.onrender.com/", {
+      const response = await fetch("https://my-project-backend-hkk6.onrender.com/api/login", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
