@@ -13,11 +13,16 @@ const Units = () => {
     db.getUnits().then(setUnits);
   }, []);
 
-  const filteredUnits = units.filter(unit => 
-    unit.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    unit.leaderName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    unit.upazilla.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredUnits = units.filter(unit => {
+  const search = searchTerm.toLowerCase();
+  
+  // Optional chaining (?.) এবং empty string fallback (|| "") ব্যবহার করা হয়েছে
+  const nameMatch = (unit.name || "").toLowerCase().includes(search);
+  const leaderMatch = (unit.leaderName || "").toLowerCase().includes(search);
+  const upazillaMatch = (unit.upazilla || "").toLowerCase().includes(search);
+
+  return nameMatch || leaderMatch || upazillaMatch;
+});
 
   return (
     <div className="py-20 bg-gray-50 min-h-screen font-['Hind_Siliguri']">
