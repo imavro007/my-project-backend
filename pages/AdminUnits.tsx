@@ -248,21 +248,21 @@ const AdminUnits = () => {
               <div className="space-y-3 mb-6 bg-gray-50/50 p-4 rounded-2xl border border-gray-50">
                 <div className="flex items-center text-xs font-bold text-gray-600">
                   <User size={14} className="mr-3 text-green-700" />
-                  <span>RSL: {unit.leaderName}</span>
+                  <span>RSL: {unit.leaderName || "নাম নেই"}</span>
                 </div>
                 <div className="flex items-center text-xs font-bold text-gray-600">
                   <Phone size={14} className="mr-3 text-green-700" />
-                  <span>{unit.contactInfo}</span>
+                  <span>{unit.contactInfo || "নম্বর নেই"}</span>
                 </div>
                 <div className="flex items-center text-xs font-bold text-gray-600">
                   <Mail size={14} className="mr-3 text-green-700" />
-                  <span className="truncate">{unit.email}</span>
+                  <span className="truncate">{unit.email || "ইমেইল নেই"}</span>
                 </div>
               </div>
               <p className="text-gray-400 text-xs italic leading-relaxed line-clamp-2">"{unit.description}"</p>
             </div>
             <div className="pt-6 mt-6 border-t border-gray-50 flex justify-between items-center">
-               <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest">UID: {unit.id.substring(0, 8)}</span>
+               <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest"> UID: {(unit.id || "").substring(0, 8)}</span>
             </div>
           </div>
         ))}
