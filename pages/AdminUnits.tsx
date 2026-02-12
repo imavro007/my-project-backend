@@ -45,8 +45,9 @@ const AdminUnits = () => {
     setShowForm(true);
   };
 
-  const handleOpenEdit = (unit: RoverUnit) => {
-    setEditingId(unit.id);
+  const handleOpenEdit = (unit: any) => {
+  // ডাটাবেসের সঠিক আইডি (_id) গ্রহণ করা হচ্ছে
+    setEditingId(unit._id || unit.id);
     setFormData({ 
       name: unit.name, 
       upazilla: unit.upazilla, 
@@ -231,7 +232,7 @@ const AdminUnits = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {units.map(unit => (
-          <div key={unit.id} className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 flex flex-col justify-between group hover:border-green-200 transition-all">
+          <div key={unit._id || unit.id} className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 flex flex-col justify-between group hover:border-green-200 transition-all">
             <div>
               <div className="flex justify-between items-start mb-6">
                 <div className="px-4 py-2 bg-green-50 rounded-xl text-green-700 text-xs font-black uppercase tracking-widest">
@@ -239,7 +240,7 @@ const AdminUnits = () => {
                 </div>
                 <div className="flex gap-1">
                   <button onClick={() => handleOpenEdit(unit)} className="p-2 text-blue-500 hover:bg-blue-50 rounded-xl transition-colors"><Edit2 size={16} /></button>
-                  <button onClick={() => handleDelete(unit.id)} className="p-2 text-red-500 hover:bg-red-50 rounded-xl transition-colors"><Trash2 size={16} /></button>
+                  <button onClick={() => handleDelete(unit._id || unit.id)} className="p-2 text-red-500 hover:bg-red-50 rounded-xl transition-colors"><Trash2 size={16} /></button>
                 </div>
               </div>
               <h4 className="font-bold text-gray-900 text-lg mb-2 line-clamp-2 leading-snug">{unit.name}</h4>
@@ -262,7 +263,7 @@ const AdminUnits = () => {
               <p className="text-gray-400 text-xs italic leading-relaxed line-clamp-2">"{unit.description}"</p>
             </div>
             <div className="pt-6 mt-6 border-t border-gray-50 flex justify-between items-center">
-               <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest"> UID: {(unit.id || "").substring(0, 8)}</span>
+               <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest"> UID: {(unit._id || unit.id || "").substring(0, 8)}</span>
             </div>
           </div>
         ))}
