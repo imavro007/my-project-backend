@@ -1,0 +1,8 @@
+{
+  "name": "Copy of Habiganj Zilla Rover Portal",
+  "description": "A comprehensive portal for Habiganj Zilla Rover scouts featuring notice management, unit directories, photo galleries, and a secure admin dashboard.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
