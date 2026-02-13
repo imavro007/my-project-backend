@@ -24,7 +24,7 @@ const AdminGallery = () => {
   };
 
   const handleOpenEdit = (item: GalleryItem) => {
-    setEditingId(item.id);
+    setEditingId((item as any)._id || item.id); // ডাটাবেসের সঠিক আইডি গ্রহণ
     setFormData({ title: item.title, description: item.description || '', imageUrl: item.imageUrl, date: item.date });
     setPreview(item.imageUrl);
     setShowForm(true);
@@ -171,7 +171,7 @@ const AdminGallery = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {items.map(item => (
-          <div key={item.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 aspect-square flex flex-col">
+          <div key={(item as any)._id || item.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 aspect-square flex flex-col">
             <img 
               src={item.imageUrl} 
               alt={item.title} 
@@ -186,7 +186,7 @@ const AdminGallery = () => {
                   <Edit2 size={16} />
                 </button>
                 <button 
-                  onClick={() => handleDelete(item.id)}
+                  onClick={() => handleDelete((item as any)._id || item.id)}
                   className="bg-white/20 backdrop-blur-md text-white p-2 rounded-xl hover:bg-red-600 transition-all shadow-lg"
                 >
                   <Trash2 size={16} />
