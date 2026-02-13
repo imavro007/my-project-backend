@@ -202,6 +202,7 @@ const ProtectedRoute = ({ children, isAuth }: { children?: React.ReactNode, isAu
 
 const App = () => {
   const [isAuth, setIsAuth] = useState<boolean>(false);
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem('admin_token');
@@ -209,8 +210,7 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen pt-20">
+      <div className={`flex flex-col min-h-screen ${location.pathname.startsWith('/admin') ? 'pt-0' : 'pt-20'}`}>
         <Routes>
           <Route path="/admin/*" element={
             <ProtectedRoute isAuth={isAuth}>
@@ -247,8 +247,13 @@ const App = () => {
           } />
         </Routes>
       </div>
-    </Router>
   );
 };
 
-export default App;
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default AppWrapper;

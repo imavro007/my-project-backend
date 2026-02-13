@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { db } from '../services/db';
-import { FileText, Users, Image as ImageIcon, Plus, ArrowRight } from 'lucide-react';
+import { FileText, Users, Image as ImageIcon, Plus, ArrowRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
@@ -35,10 +35,21 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900 font-['Hind_Siliguri']">এডমিন ড্যাশবোর্ড</h1>
-        <p className="text-gray-500 mt-2">ফিরে আসার জন্য স্বাগতম। পোর্টালে আজকের আপডেটগুলো নিচে দেখুন।</p>
+    <div className="space-y-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900 font-['Hind_Siliguri']">এডমিন ড্যাশবোর্ড</h1>
+          <p className="text-gray-500 mt-2">ফিরে আসার জন্য স্বাগতম। পোর্টালে আজকের আপডেটগুলো নিচে দেখুন।</p>
+        </div>
+
+        {/* নতুন বাটন */}
+        <Link
+          to="/"
+          className="flex items-center justify-center gap-2 bg-white border border-gray-200 text-gray-700 px-6 py-3 rounded-2xl font-bold hover:bg-gray-50 hover:text-green-700 transition-all shadow-sm w-fit"
+        >
+          <ExternalLink size={18} />
+          <span>মূল ওয়েবসাইট</span>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-['Hind_Siliguri']">
@@ -81,14 +92,14 @@ const AdminDashboard = () => {
         <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
           <h2 className="text-xl font-bold text-gray-900 mb-6">সাম্প্রতিক কার্যক্রম</h2>
           <div className="space-y-4 text-sm">
-             <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                <p><span className="font-bold">সিস্টেম অনলাইন।</span> সকল কনফিগারেশন সঠিকভাবে লোড হয়েছে।</p>
-             </div>
-             <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                <p><span className="font-bold">ডেটাবেস সক্রিয়।</span> ডেমো ব্যবহারের জন্য লোকাল স্টোরেজ সচল।</p>
-             </div>
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></div>
+              <p><span className="font-bold">সিস্টেম অনলাইন।</span> সকল কনফিগারেশন সঠিকভাবে লোড হয়েছে।</p>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
+              <p><span className="font-bold">ডেটাবেস সক্রিয়।</span> ডেমো ব্যবহারের জন্য লোকাল স্টোরেজ সচল।</p>
+            </div>
           </div>
         </div>
       </div>
