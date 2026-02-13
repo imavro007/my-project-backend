@@ -32,7 +32,7 @@ const AdminNotices = () => {
   };
 
   const handleOpenEdit = (notice: Notice) => {
-    setEditingId(notice.id);
+    setEditingId((notice as any)._id || notice.id); // _id কে প্রাধান্য দিন
     setFormData({ 
       title: notice.title, 
       description: notice.description, 
@@ -163,7 +163,7 @@ const AdminNotices = () => {
           </thead>
           <tbody className="divide-y divide-gray-50">
             {notices.map(notice => (
-              <tr key={notice.id} className="hover:bg-gray-50/50 transition-colors group">
+              <tr key={(notice as any)._id || notice.id} className="hover:bg-gray-50/50 transition-colors group">
                 <td className="px-8 py-8">
                   <div className="flex items-center gap-2">
                     <h4 className="font-bold text-gray-900 mb-1 group-hover:text-green-700 transition-colors">{notice.title}</h4>
@@ -185,7 +185,7 @@ const AdminNotices = () => {
                       <Edit2 size={18} />
                     </button>
                     <button 
-                      onClick={() => handleDelete(notice.id)}
+                      onClick={() => handleDelete((notice as any)._id || notice.id)}
                       className="p-3 text-red-500 hover:bg-red-50 rounded-xl transition-colors"
                     >
                       <Trash2 size={18} />
